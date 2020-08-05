@@ -49,11 +49,13 @@ function SocketConnection(connection, connectCallback) {
         }
     }
 
-    // try {
-    //     connection.socket = io(connection.socketURL + parameters);
-    // } catch (e) {
-    //     connection.socket = io.connect(connection.socketURL + parameters, connection.socketOptions);
-    // }
+    try {
+        //     connection.socket = io(connection.socketURL + parameters);
+        connection.socket = io.socket._raw;
+    } catch (e) {
+        //     connection.socket = io.connect(connection.socketURL + parameters, connection.socketOptions);
+    }
+
 
     var mPeer = connection.multiPeersHandler;
 
