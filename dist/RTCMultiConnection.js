@@ -1,6 +1,6 @@
 'use strict';
 
-// Last time updated: 2020-08-05 11:32:27 PM UTC
+// Last time updated: 2020-08-05 11:39:23 PM UTC
 
 // _________________________
 // RTCMultiConnection v3.7.0
@@ -353,6 +353,7 @@ var RTCMultiConnection = function(roomid, forceOptions) {
             mPeer.addNegotiatedMessage(message.message, message.sender);
         }
 
+        console.log('connection.socket.on(connection.socketMessageEvent, onMessageEvent);', connection.socketMessageEvent, connection.socket)
         connection.socket.on(connection.socketMessageEvent, onMessageEvent);
 
         var alreadyConnected = false;

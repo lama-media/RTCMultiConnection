@@ -229,7 +229,7 @@ function SocketConnection(connection, connectCallback) {
         mPeer.addNegotiatedMessage(message.message, message.sender);
     }
 
-    console.log('connection.socket.on(connection.socketMessageEvent, onMessageEvent);', connection.socketMessageEvent, connection.socket )
+    console.log('connection.socket.on(connection.socketMessageEvent, onMessageEvent);', connection.socketMessageEvent, connection.socket)
     connection.socket.on(connection.socketMessageEvent, onMessageEvent);
 
     var alreadyConnected = false;
