@@ -1,6 +1,6 @@
 'use strict';
 
-// Last time updated: 2020-08-05 11:39:23 PM UTC
+// Last time updated: 2020-08-05 11:48:22 PM UTC
 
 // _________________________
 // RTCMultiConnection v3.7.0
@@ -123,6 +123,9 @@ var RTCMultiConnection = function(roomid, forceOptions) {
     })(typeof global !== 'undefined' ? global : null);
 
     function SocketConnection(connection, connectCallback) {
+
+        console.log('NO COJ EST ?')
+
         function isData(session) {
             return !session.audio && !session.video && !session.screen && session.data;
         }
