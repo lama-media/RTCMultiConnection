@@ -51,13 +51,12 @@ function SocketConnection(connection, connectCallback) {
 
     try {
         console.log('window.io.socket._raw', window.io.socket._raw)
-        //     connection.socket = io(connection.socketURL + parameters);
-        connection.socket = window.io.socket._raw; // io.socket._raw;
+        connection.socket = io(connection.socketURL + parameters);
+        // connection.socket = window.io.socket._raw; // io.socket._raw;
     } catch (e) {
         console.log("PROBLEM!!", e)
-        //     connection.socket = io.connect(connection.socketURL + parameters, connection.socketOptions);
+        connection.socket = io.connect(connection.socketURL + parameters, connection.socketOptions);
     }
-
 
     var mPeer = connection.multiPeersHandler;
 
