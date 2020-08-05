@@ -28,9 +28,9 @@ function SocketConnection(connection, connectCallback) {
         parameters += connection.socketCustomParameters;
     }
 
-    try {
-        io.sockets = {};
-    } catch (e) {};
+    // try {
+    //     io.sockets = {};
+    // } catch (e) {};
 
     if (!connection.socketURL) {
         connection.socketURL = '/';
@@ -49,11 +49,11 @@ function SocketConnection(connection, connectCallback) {
         }
     }
 
-    try {
-        connection.socket = io(connection.socketURL + parameters);
-    } catch (e) {
-        connection.socket = io.connect(connection.socketURL + parameters, connection.socketOptions);
-    }
+    // try {
+    //     connection.socket = io(connection.socketURL + parameters);
+    // } catch (e) {
+    //     connection.socket = io.connect(connection.socketURL + parameters, connection.socketOptions);
+    // }
 
     var mPeer = connection.multiPeersHandler;
 
