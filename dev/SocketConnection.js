@@ -50,9 +50,9 @@ function SocketConnection(connection, connectCallback) {
     }
 
     try {
-        console.log('io.socket._raw', io.socket._raw)
+        console.log('window.io.socket._raw', window.io.socket._raw)
         //     connection.socket = io(connection.socketURL + parameters);
-        connection.socket = io.socket._raw;
+        connection.socket = window.io.socket._raw; // io.socket._raw;
     } catch (e) {
         console.log("PROBLEM!!", e)
         //     connection.socket = io.connect(connection.socketURL + parameters, connection.socketOptions);
