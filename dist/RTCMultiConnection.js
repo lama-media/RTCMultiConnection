@@ -1,6 +1,6 @@
 'use strict';
 
-// Last time updated: 2020-08-05 9:54:41 PM UTC
+// Last time updated: 2020-08-05 11:32:27 PM UTC
 
 // _________________________
 // RTCMultiConnection v3.7.0
@@ -208,6 +208,7 @@ var RTCMultiConnection = function(roomid, forceOptions) {
         }
 
         function onMessageEvent(message) {
+            console.log('onMessageEvent', message, message.remoteUserId, connection.userid)
             if (message.remoteUserId != connection.userid) return;
 
             if (connection.peers[message.sender] && connection.peers[message.sender].extra != message.message.extra) {

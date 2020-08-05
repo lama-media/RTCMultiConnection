@@ -84,6 +84,7 @@ function SocketConnection(connection, connectCallback) {
     }
 
     function onMessageEvent(message) {
+        console.log('onMessageEvent', message, message.remoteUserId, connection.userid)
         if (message.remoteUserId != connection.userid) return;
 
         if (connection.peers[message.sender] && connection.peers[message.sender].extra != message.message.extra) {
