@@ -1,4 +1,4 @@
-var SocketConnection = function SocketConnection(connection, connectCallback) {
+function SocketConnection(connection, connectCallback) {
 
     console.log('NO COJ EST ?')
 
@@ -321,5 +321,3 @@ var SocketConnection = function SocketConnection(connection, connectCallback) {
         connection.isInitiator = true;
     });
 }
-
-window.SocketConnection = SocketConnection

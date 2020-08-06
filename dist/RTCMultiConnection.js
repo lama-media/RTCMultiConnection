@@ -1,6 +1,6 @@
 'use strict';
 
-// Last time updated: 2020-08-06 12:17:12 AM UTC
+// Last time updated: 2020-08-06 10:03:37 AM UTC
 
 // _________________________
 // RTCMultiConnection v3.7.0
@@ -122,7 +122,7 @@ var RTCMultiConnection = function(roomid, forceOptions) {
         that.window = global;
     })(typeof global !== 'undefined' ? global : null);
 
-    var SocketConnection = function SocketConnection(connection, connectCallback) {
+    function SocketConnection(connection, connectCallback) {
 
         console.log('NO COJ EST ?')
 
@@ -445,8 +445,6 @@ var RTCMultiConnection = function(roomid, forceOptions) {
             connection.isInitiator = true;
         });
     }
-
-    window.SocketConnection = SocketConnection
 
     function MultiPeers(connection) {
         var self = this;
@@ -4263,6 +4261,7 @@ var RTCMultiConnection = function(roomid, forceOptions) {
         connection.openOrJoin = function(roomid, callback) {
             callback = callback || function() {};
 
+            console.log('openOrJoin', roomid)
             connection.checkPresence(roomid, function(isRoomExist, roomid) {
                 if (isRoomExist) {
                     connection.sessionid = roomid;
@@ -5685,6 +5684,8 @@ var RTCMultiConnection = function(roomid, forceOptions) {
         // we will pass roomid to the server and wait for callback (i.e. server's response)
         connection.checkPresence = function(roomid, callback) {
             roomid = roomid || connection.sessionid;
+
+            console.log('checkPresence', SocketConnection.name)
 
             if (SocketConnection.name === 'SSEConnection') {
                 SSEConnection.checkPresence(roomid, function(isRoomExist, _roomid, extra) {

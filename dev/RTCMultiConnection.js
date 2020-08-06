@@ -190,6 +190,7 @@
     connection.openOrJoin = function(roomid, callback) {
         callback = callback || function() {};
 
+        console.log('openOrJoin', roomid)
         connection.checkPresence(roomid, function(isRoomExist, roomid) {
             if (isRoomExist) {
                 connection.sessionid = roomid;
@@ -1612,6 +1613,8 @@
     // we will pass roomid to the server and wait for callback (i.e. server's response)
     connection.checkPresence = function(roomid, callback) {
         roomid = roomid || connection.sessionid;
+
+        console.log('checkPresence', SocketConnection.name)
 
         if (SocketConnection.name === 'SSEConnection') {
             SSEConnection.checkPresence(roomid, function(isRoomExist, _roomid, extra) {
