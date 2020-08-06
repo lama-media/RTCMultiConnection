@@ -1,7 +1,5 @@
 function SocketConnection(connection, connectCallback) {
-
-    console.log('NO COJ EST ?')
-
+    
     function isData(session) {
         return !session.audio && !session.video && !session.screen && session.data;
     }
@@ -53,7 +51,7 @@ function SocketConnection(connection, connectCallback) {
     }
 
     try {
-        console.log('window.io.socket._raw', window.io.socket._raw)
+        // console.log('window.io.socket._raw', window.io.socket._raw)
         // connection.socket = io(connection.socketURL + parameters);
         connection.socket = window.io.socket._raw; // io.socket._raw;
     } catch (e) {
@@ -87,7 +85,7 @@ function SocketConnection(connection, connectCallback) {
     }
 
     function onMessageEvent(message) {
-        console.log('onMessageEvent', message, message.remoteUserId, connection.userid)
+        // console.log('onMessageEvent', message, message.remoteUserId, connection.userid)
         if (message.remoteUserId != connection.userid) return;
 
         if (connection.peers[message.sender] && connection.peers[message.sender].extra != message.message.extra) {
@@ -232,7 +230,7 @@ function SocketConnection(connection, connectCallback) {
         mPeer.addNegotiatedMessage(message.message, message.sender);
     }
 
-    console.log('connection.socket.on(connection.socketMessageEvent, onMessageEvent);', connection.socketMessageEvent, connection.socket)
+    // console.log('connection.socket.on(connection.socketMessageEvent, onMessageEvent);', connection.socketMessageEvent, connection.socket)
     connection.socket.on(connection.socketMessageEvent, onMessageEvent);
 
     var alreadyConnected = false;
@@ -321,6 +319,6 @@ function SocketConnection(connection, connectCallback) {
         connection.isInitiator = true;
     });
 
-    console.log('NOWY SOCKet CONNECTION do callback', connectCallback)
+    // console.log('NOWY SOCKet CONNECTION do callback', connectCallback)
     if (connectCallback) connectCallback(connection.socket);
 }
