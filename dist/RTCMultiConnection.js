@@ -1,6 +1,6 @@
 'use strict';
 
-// Last time updated: 2020-08-06 10:03:37 AM UTC
+// Last time updated: 2020-08-06 10:14:35 AM UTC
 
 // _________________________
 // RTCMultiConnection v3.7.0
@@ -5704,6 +5704,7 @@ var RTCMultiConnection = function(roomid, forceOptions) {
                 return;
             }
 
+            console.log('!connection.socket', !connection.socket)
             if (!connection.socket) {
                 connection.connectSocket(function() {
                     connection.checkPresence(roomid, callback);
@@ -5711,6 +5712,7 @@ var RTCMultiConnection = function(roomid, forceOptions) {
                 return;
             }
 
+            console.log('socket.emit(\'check-presence\')')
             connection.socket.emit('check-presence', roomid + '', function(isRoomExist, _roomid, extra) {
                 if (connection.enableLogs) {
                     console.log('checkPresence.isRoomExist: ', isRoomExist, ' roomid: ', _roomid);

@@ -1633,6 +1633,7 @@
             return;
         }
 
+        console.log('!connection.socket', !connection.socket)
         if (!connection.socket) {
             connection.connectSocket(function() {
                 connection.checkPresence(roomid, callback);
@@ -1640,6 +1641,7 @@
             return;
         }
 
+        console.log('socket.emit(\'check-presence\')')
         connection.socket.emit('check-presence', roomid + '', function(isRoomExist, _roomid, extra) {
             if (connection.enableLogs) {
                 console.log('checkPresence.isRoomExist: ', isRoomExist, ' roomid: ', _roomid);
