@@ -321,3 +321,5 @@ var SocketConnection = function SocketConnection(connection, connectCallback) {
         connection.isInitiator = true;
     });
 }
+
+window.SocketConnection = SocketConnection

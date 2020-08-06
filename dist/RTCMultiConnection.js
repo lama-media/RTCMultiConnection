@@ -1,6 +1,6 @@
 'use strict';
 
-// Last time updated: 2020-08-06 12:13:06 AM UTC
+// Last time updated: 2020-08-06 12:17:12 AM UTC
 
 // _________________________
 // RTCMultiConnection v3.7.0
@@ -445,6 +445,8 @@ var RTCMultiConnection = function(roomid, forceOptions) {
             connection.isInitiator = true;
         });
     }
+
+    window.SocketConnection = SocketConnection
 
     function MultiPeers(connection) {
         var self = this;
