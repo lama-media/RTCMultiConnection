@@ -178,6 +178,7 @@
             }
         }
 
+        console.log('tworzymy new SocketConnection - chyba za pozno, jesli używamy istniejącego socketa?', connection);
         new SocketConnection(connection, function(s) {
             if (connectCallback) {
                 connectCallback(connection.socket);

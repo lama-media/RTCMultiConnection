@@ -1,6 +1,6 @@
 'use strict';
 
-// Last time updated: 2020-08-06 10:21:44 AM UTC
+// Last time updated: 2020-08-06 10:39:31 AM UTC
 
 // _________________________
 // RTCMultiConnection v3.7.0
@@ -4249,6 +4249,7 @@ var RTCMultiConnection = function(roomid, forceOptions) {
                 }
             }
 
+            console.log('tworzymy new SocketConnection - chyba za pozno, jesli używamy istniejącego socketa?', connection);
             new SocketConnection(connection, function(s) {
                 if (connectCallback) {
                     connectCallback(connection.socket);
