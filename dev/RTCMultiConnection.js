@@ -1614,7 +1614,7 @@
     connection.checkPresence = function(roomid, callback) {
         roomid = roomid || connection.sessionid;
 
-        console.log('checkPresence', SocketConnection.name)
+        console.log('checkPresence', SocketConnection.name, 'called from', new Error().stack)
 
         if (SocketConnection.name === 'SSEConnection') {
             SSEConnection.checkPresence(roomid, function(isRoomExist, _roomid, extra) {

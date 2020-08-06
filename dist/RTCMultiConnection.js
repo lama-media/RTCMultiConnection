@@ -1,6 +1,6 @@
 'use strict';
 
-// Last time updated: 2020-08-06 10:14:35 AM UTC
+// Last time updated: 2020-08-06 10:21:44 AM UTC
 
 // _________________________
 // RTCMultiConnection v3.7.0
@@ -5685,7 +5685,7 @@ var RTCMultiConnection = function(roomid, forceOptions) {
         connection.checkPresence = function(roomid, callback) {
             roomid = roomid || connection.sessionid;
 
-            console.log('checkPresence', SocketConnection.name)
+            console.log('checkPresence', SocketConnection.name, 'called from', new Error().stack)
 
             if (SocketConnection.name === 'SSEConnection') {
                 SSEConnection.checkPresence(roomid, function(isRoomExist, _roomid, extra) {
