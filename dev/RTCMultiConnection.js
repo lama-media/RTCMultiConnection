@@ -155,7 +155,7 @@
     connection.socketOptions = {
         // 'force new connection': true, // For SocketIO version < 1.0
         // 'forceNew': true, // For SocketIO version >= 1.0
-        'transport': 'websocket' // fixing transport:unknown issues
+        'transport': 'polling' // fixing transport:unknown issues
     };
 
     function connectSocket(connectCallback) {
@@ -178,7 +178,6 @@
             }
         }
 
-        console.log('tworzymy new SocketConnection - chyba za pozno, jesli używamy istniejącego socketa?', connection);
         new SocketConnection(connection, function(s) {
             if (connectCallback) {
                 connectCallback(connection.socket);
@@ -191,7 +190,6 @@
     connection.openOrJoin = function(roomid, callback) {
         callback = callback || function() {};
 
-        console.log('openOrJoin', roomid)
         connection.checkPresence(roomid, function(isRoomExist, roomid) {
             if (isRoomExist) {
                 connection.sessionid = roomid;
@@ -1615,8 +1613,6 @@
     connection.checkPresence = function(roomid, callback) {
         roomid = roomid || connection.sessionid;
 
-        console.log('checkPresence', SocketConnection.name, 'called from', new Error().stack)
-
         if (SocketConnection.name === 'SSEConnection') {
             SSEConnection.checkPresence(roomid, function(isRoomExist, _roomid, extra) {
                 if (!connection.socket) {
@@ -1634,7 +1630,6 @@
             return;
         }
 
-        console.log('!connection.socket', !connection.socket)
         if (!connection.socket) {
             connection.connectSocket(function() {
                 connection.checkPresence(roomid, callback);
@@ -1642,7 +1637,6 @@
             return;
         }
 
-        console.log('socket.emit(\'check-presence\')')
         connection.socket.emit('check-presence', roomid + '', function(isRoomExist, _roomid, extra) {
             if (connection.enableLogs) {
                 console.log('checkPresence.isRoomExist: ', isRoomExist, ' roomid: ', _roomid);
