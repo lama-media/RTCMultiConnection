@@ -1,4 +1,4 @@
-function SocketConnection(connection, connectCallback) {
+var SocketConnection = function SocketConnection(connection, connectCallback) {
 
     console.log('NO COJ EST ?')
 
