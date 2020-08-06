@@ -321,7 +321,7 @@ function SocketConnection(connection, connectCallback) {
         connection.isInitiator = true;
     });
     
-    
+    console.log('NOWY SOCKet CONNECTION do callback', connectCallback)
     if (connectCallback) connectCallback(connection.socket);
 }
 
