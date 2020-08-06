@@ -320,4 +320,8 @@ function SocketConnection(connection, connectCallback) {
         if (sessionid != connection.sessionid) return;
         connection.isInitiator = true;
     });
+    
+    
+    if (connectCallback) connectCallback(connection.socket);
 }
+
