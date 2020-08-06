@@ -155,7 +155,7 @@
     connection.socketOptions = {
         // 'force new connection': true, // For SocketIO version < 1.0
         // 'forceNew': true, // For SocketIO version >= 1.0
-        'transport': 'polling' // fixing transport:unknown issues
+        'transport': 'websocket' // fixing transport:unknown issues
     };
 
     function connectSocket(connectCallback) {
