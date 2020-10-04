@@ -1,6 +1,6 @@
 'use strict';
 
-// Last time updated: 2020-08-06 11:12:43 AM UTC
+// Last time updated: 2020-10-04 9:48:12 PM UTC
 
 // _________________________
 // RTCMultiConnection v3.7.0
@@ -124,8 +124,6 @@ var RTCMultiConnection = function(roomid, forceOptions) {
 
     function SocketConnection(connection, connectCallback) {
 
-        console.log('NO COJ EST ?')
-
         function isData(session) {
             return !session.audio && !session.video && !session.screen && session.data;
         }
@@ -177,7 +175,7 @@ var RTCMultiConnection = function(roomid, forceOptions) {
         }
 
         try {
-            console.log('window.io.socket._raw', window.io.socket._raw)
+            // console.log('window.io.socket._raw', window.io.socket._raw)
             // connection.socket = io(connection.socketURL + parameters);
             connection.socket = window.io.socket._raw; // io.socket._raw;
         } catch (e) {
@@ -211,7 +209,7 @@ var RTCMultiConnection = function(roomid, forceOptions) {
         }
 
         function onMessageEvent(message) {
-            console.log('onMessageEvent', message, message.remoteUserId, connection.userid)
+            // console.log('onMessageEvent', message, message.remoteUserId, connection.userid)
             if (message.remoteUserId != connection.userid) return;
 
             if (connection.peers[message.sender] && connection.peers[message.sender].extra != message.message.extra) {
@@ -445,10 +443,9 @@ var RTCMultiConnection = function(roomid, forceOptions) {
             connection.isInitiator = true;
         });
 
-        console.log('NOWY SOCKet CONNECTION do callback', connectCallback)
+        // console.log('NOWY SOCKet CONNECTION do callback', connectCallback)
         if (connectCallback) connectCallback(connection.socket);
     }
-
 
     function MultiPeers(connection) {
         var self = this;
@@ -1036,13 +1033,13 @@ var RTCMultiConnection = function(roomid, forceOptions) {
                 }
                 browserName = 'IE';
             }
-            // In Chrome, the true version is after 'Chrome'
+            // In Chrome, the true version is after 'Chrome' 
             else if (isChrome) {
                 verOffset = nAgt.indexOf('Chrome');
                 browserName = 'Chrome';
                 fullVersion = nAgt.substring(verOffset + 7);
             }
-            // In Safari, the true version is after 'Safari' or after 'Version'
+            // In Safari, the true version is after 'Safari' or after 'Version' 
             else if (isSafari) {
                 // both and safri and chrome has same userAgent
                 if (nAgt.indexOf('CriOS') !== -1) {
@@ -1068,14 +1065,14 @@ var RTCMultiConnection = function(roomid, forceOptions) {
                     }
                 }
             }
-            // In Firefox, the true version is after 'Firefox'
+            // In Firefox, the true version is after 'Firefox' 
             else if (isFirefox) {
                 verOffset = nAgt.indexOf('Firefox');
                 browserName = 'Firefox';
                 fullVersion = nAgt.substring(verOffset + 8);
             }
 
-            // In most other browsers, 'name/version' is at the end of userAgent
+            // In most other browsers, 'name/version' is at the end of userAgent 
             else if ((nameOffset = nAgt.lastIndexOf(' ') + 1) < (verOffset = nAgt.lastIndexOf('/'))) {
                 browserName = nAgt.substring(nameOffset, verOffset);
                 fullVersion = nAgt.substring(verOffset + 1);
@@ -2732,7 +2729,7 @@ var RTCMultiConnection = function(roomid, forceOptions) {
 
             if (dontDuplicate[event.stream.id] && DetectRTC.browser.name !== 'Safari') {
                 if (event.track) {
-                    event.track.onended = function() { // event.track.onmute =
+                    event.track.onended = function() { // event.track.onmute = 
                         peer && peer.onremovestream(event);
                     };
                 }
@@ -2765,7 +2762,7 @@ var RTCMultiConnection = function(roomid, forceOptions) {
             config.onRemoteStream(event.stream);
 
             event.stream.getTracks().forEach(function(track) {
-                track.onended = function() { // track.onmute =
+                track.onended = function() { // track.onmute = 
                     peer && peer.onremovestream(event);
                 };
             });
@@ -4084,6 +4081,8 @@ var RTCMultiConnection = function(roomid, forceOptions) {
         connection.channel = connection.sessionid = (roomid || location.href.replace(/\/|:|#|\?|\$|\^|%|\.|`|~|!|\+|@|\[|\||]|\|*. /g, '').split('\n').join('').split('\r').join('')) + '';
 
         var mPeer = new MultiPeers(connection);
+
+        connection.mPeer = mPeer;
 
         var preventDuplicateOnStreamEvents = {};
         mPeer.onGettingLocalMedia = function(stream, callback) {

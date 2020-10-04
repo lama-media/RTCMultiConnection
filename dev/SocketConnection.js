@@ -1,5 +1,5 @@
 function SocketConnection(connection, connectCallback) {
-    
+
     function isData(session) {
         return !session.audio && !session.video && !session.screen && session.data;
     }

@@ -10,6 +10,8 @@
 
     var mPeer = new MultiPeers(connection);
 
+    connection.mPeer = mPeer;
+
     var preventDuplicateOnStreamEvents = {};
     mPeer.onGettingLocalMedia = function(stream, callback) {
         callback = callback || function() {};
